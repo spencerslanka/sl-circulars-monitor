@@ -40,7 +40,17 @@ jobs:
           GMAIL_USER:                ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
-        run: python run_alerts.py
+        run: |
+          python -c "
+          import sqlite3, os
+          print('CWD:', os.getcwd())
+          print('DB exists:', os.path.exists('circulars.db'))
+          c = sqlite3.connect('circulars.db')
+          print('Tables:', c.execute(\"SELECT name FROM sqlite_master WHERE type='table'\").fetchall())
+          print('Row count:', c.execute('SELECT COUNT(*) FROM circulars').fetchone())
+          print('Sample lang:', c.execute('SELECT DISTINCT language FROM circulars').fetchall())
+          "
+          python run_alerts.py
 
       - name: Commit updated DB
         run: |
