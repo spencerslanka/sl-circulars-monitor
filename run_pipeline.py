@@ -206,22 +206,17 @@ def extract_text(pdf_path, lang_code):
 
 def build_prompt(circular, text, lang_code):
     if lang_code == 'S':
-        # English instruction but Sinhala values — models handle JSON better with English keys
         prompt = f"""You are analysing a Sri Lanka government circular written in Sinhala.
-Respond ONLY with a valid JSON object. No text before or after. No markdown code blocks.
-All values must be in Sinhala language (except dates and null).
 
-{{
-  "circular_number": "{circular['number']}",
-  "issued_date": "YYYY-MM-DD or null",
-  "issued_by": "අමාත්‍යාංශය හෝ අධිකාරිය",
-  "topic": "කෙටි මාතෘකාව",
-  "summary": "සාරාංශය වාක්‍ය 2-3",
-  "key_instructions": ["උපදෙස 1", "උපදෙස 2"],
-  "applies_to": "අදාළ පාර්ශ්ව",
-  "deadline": "දිනය හෝ null",
-  "language_detected": "Sinhala"
-}}
+Read the circular text below and extract the following fields.
+Respond in this EXACT format with no extra text:
+
+TOPIC: (short topic title in Sinhala)
+SUMMARY: (2-3 sentence summary in Sinhala)
+ISSUED_BY: (ministry or authority in Sinhala)
+ISSUED_DATE: (YYYY-MM-DD or null)
+APPLIES_TO: (who this applies to, in Sinhala)
+DEADLINE: (deadline date or null)
 
 Circular number: {circular['number']}
 Date: {circular['date']}
@@ -231,19 +226,16 @@ Circular text:
 {text[:MAX_TEXT_CHARS]}"""
     else:
         prompt = f"""You are analysing a Sri Lanka government circular written in English.
-Respond ONLY with a valid JSON object. No text before or after. No markdown code blocks.
 
-{{
-  "circular_number": "{circular['number']}",
-  "issued_date": "YYYY-MM-DD or null",
-  "issued_by": "ministry or authority name",
-  "topic": "short topic title",
-  "summary": "2-3 sentence summary",
-  "key_instructions": ["instruction 1", "instruction 2"],
-  "applies_to": "who this applies to",
-  "deadline": "deadline or null",
-  "language_detected": "English"
-}}
+Read the circular text below and extract the following fields.
+Respond in this EXACT format with no extra text:
+
+TOPIC: (short topic title in English)
+SUMMARY: (2-3 sentence summary in English)
+ISSUED_BY: (ministry or authority name)
+ISSUED_DATE: (YYYY-MM-DD or null)
+APPLIES_TO: (who this circular applies to)
+DEADLINE: (deadline date or null)
 
 Circular number: {circular['number']}
 Date: {circular['date']}
@@ -253,17 +245,30 @@ Circular text:
 {text[:MAX_TEXT_CHARS]}"""
     return prompt
 
-def parse_response(text):
-    text = text.strip()
-    text = re.sub(r'^```json\s*', '', text)
-    text = re.sub(r'^```\s*', '', text)
-    text = re.sub(r'\s*```$', '', text).strip()
-    if text.count('{') > text.count('}'):
-        text += '}'
-    match = re.search(r'\{.*\}', text, re.DOTALL)
-    if match:
-        return json.loads(match.group())
-    return json.loads(text)
+def parse_response(raw):
+    """Parse plain text key:value response into a dict."""
+    result = {}
+    for line in raw.strip().splitlines():
+        if ':' in line:
+            key, _, val = line.partition(':')
+            key = key.strip().upper()
+            val = val.strip()
+            if val.lower() == 'null':
+                val = None
+            mapping = {
+                'TOPIC':        'topic',
+                'SUMMARY':      'summary',
+                'ISSUED_BY':    'issued_by',
+                'ISSUED_DATE':  'issued_date',
+                'APPLIES_TO':   'applies_to',
+                'DEADLINE':     'deadline',
+            }
+            if key in mapping:
+                result[mapping[key]] = val
+    # Always include key_instructions as empty list if missing
+    result.setdefault('key_instructions', [])
+    result.setdefault('language_detected', 'unknown')
+    return result
 
 
 # ═════════════════════════════════════════════════════════════════════════
