@@ -12,9 +12,6 @@ import time
 import re
 import os
 import fitz
-import pytesseract
-from PIL import Image
-import io
 from pathlib import Path
 from datetime import datetime
 from groq import Groq
@@ -190,33 +187,16 @@ def build_txt_path(circular, lang_code):
     return folder / f'{safe_filename(circular["number"])}.txt'
 
 def extract_text(pdf_path, lang_code):
+    """Extract text from PDF. Uses direct extraction only (OCR skipped — too slow on free CI)."""
     doc = fitz.open(pdf_path)
-    pages_info = []
     full_text = ''
+    total_chars = 0
     for i, page in enumerate(doc):
         text = page.get_text()
-        chars = len(text.strip())
-        pages_info.append({'chars': chars, 'is_scanned': chars < MIN_CHARS_PAGE})
+        total_chars += len(text.strip())
         full_text += f'\n--- Page {i+1} ---\n{text}'
     doc.close()
-
-    scanned = sum(1 for p in pages_info if p['is_scanned'])
-    if scanned > len(pages_info) / 2:
-        # OCR fallback
-        ocr_lang = 'sin+eng' if lang_code == 'S' else 'eng'
-        doc2 = fitz.open(pdf_path)
-        full_text = ''
-        for i, page in enumerate(doc2):
-            mat = fitz.Matrix(300/72, 300/72)
-            pix = page.get_pixmap(matrix=mat)
-            img = Image.open(io.BytesIO(pix.tobytes('png')))
-            try:
-                text = pytesseract.image_to_string(img, lang=ocr_lang)
-            except Exception:
-                text = pytesseract.image_to_string(img, lang='eng')
-            full_text += f'\n--- Page {i+1} (OCR) ---\n{text}'
-        doc2.close()
-
+    print(f'    Extracted {total_chars} chars from {pdf_path.name}')
     return full_text
 
 
