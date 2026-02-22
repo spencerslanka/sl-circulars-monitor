@@ -1,0 +1,56 @@
+name: Sri Lanka Circulars — Daily Pipeline
+
+on:
+  schedule:
+    # Runs every day at 8:00 AM Sri Lanka time (2:30 AM UTC)
+    - cron: '30 2 * * *'
+
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out your repo (includes circulars.db, downloads/, extracted_text/)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Install system dependencies (Tesseract for OCR)
+      - name: Install Tesseract + Sinhala language pack
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-sin
+
+      # 4. Install Python packages
+      - name: Install Python dependencies
+        run: |
+          pip install requests beautifulsoup4 pymupdf pytesseract Pillow groq
+
+      # 5. Run the pipeline
+      - name: Run pipeline
+        env:
+          GROQ_API_KEY:        ${{ secrets.GROQ_API_KEY }}
+          SLACK_WEBHOOK_URL:   ${{ secrets.SLACK_WEBHOOK_URL }}
+          GMAIL_USER:          ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:  ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO:            ${{ secrets.GMAIL_TO }}
+        run: python run_pipeline.py
+
+      # 6. Commit updated DB + any new files back to the repo
+      - name: Commit updated database and files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add circulars.db downloads/ extracted_text/ || true
+          git diff --staged --quiet || git commit -m "auto: $(date '+%Y-%m-%d') — new circulars processed"
+          git push
