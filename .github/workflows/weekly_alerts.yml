@@ -5,6 +5,9 @@ on:
     - cron: '0 6 * * 1'  # Every Monday at 6:00 AM UTC
   workflow_dispatch:       # Allow manual trigger
 
+permissions:
+  contents: write
+
 jobs:
   run-alerts:
     runs-on: ubuntu-latest
@@ -12,15 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Debug - list files
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Files present:"
-          ls -la
-          echo "DB tables:"
-          python -c "import sqlite3; c=sqlite3.connect('circulars.db'); print(c.execute(\"SELECT name FROM sqlite_master WHERE type='table'\").fetchall())"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,17 +34,7 @@ jobs:
           GMAIL_USER:                ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
-        run: |
-          python -c "
-          import sqlite3, os
-          print('CWD:', os.getcwd())
-          print('DB exists:', os.path.exists('circulars.db'))
-          c = sqlite3.connect('circulars.db')
-          print('Tables:', c.execute(\"SELECT name FROM sqlite_master WHERE type='table'\").fetchall())
-          print('Row count:', c.execute('SELECT COUNT(*) FROM circulars').fetchone())
-          print('Sample lang:', c.execute('SELECT DISTINCT language FROM circulars').fetchall())
-          "
-          python run_alerts.py
+        run: python run_alerts.py
 
       - name: Commit updated DB
         run: |
