@@ -40,6 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          git pull --rebase origin main
           git add circulars.db
           git commit -m "Update circulars.db [skip ci]" || echo "No changes to commit"
           git push
