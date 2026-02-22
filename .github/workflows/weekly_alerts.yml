@@ -32,3 +32,11 @@ jobs:
           GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
         run: python run_alerts.py
+
+      - name: Commit updated DB
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add circulars.db
+          git commit -m "Update circulars.db [skip ci]" || echo "No changes to commit"
+          git push
