@@ -11,6 +11,7 @@ on:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       # 1. Check out your repo (includes circulars.db, downloads/, extracted_text/)
@@ -25,16 +26,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      # 3. Install system dependencies (Tesseract for OCR)
-      - name: Install Tesseract + Sinhala language pack
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-sin
-
-      # 4. Install Python packages
+      # 3. Install Python packages
       - name: Install Python dependencies
         run: |
-          pip install requests beautifulsoup4 pymupdf pytesseract Pillow groq
+          pip install requests beautifulsoup4 pymupdf groq
 
       # 5. Run the pipeline
       - name: Run pipeline
