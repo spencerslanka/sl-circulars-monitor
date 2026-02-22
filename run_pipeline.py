@@ -206,54 +206,52 @@ def extract_text(pdf_path, lang_code):
 
 def build_prompt(circular, text, lang_code):
     if lang_code == 'S':
-        lines = [
-            "ඔබ ශ්‍රී ලංකා රජයේ චක්‍රලේඛ විශ්ලේෂණය කරන විශේෂඥයෙකි.",
-            "සිංහල භාෂාවෙන් පමණක් පිළිතුරු දෙන්න.",
-            "",
-            "පහත JSON ආකෘතියෙන් පමණක් පිළිතුරු දෙන්න (JSON ට පෙර හෝ පසුව කිසිවක් නොලියන්න):",
-            "{",
-            '  "circular_number": "චක්‍රලේඛ අංකය",',
-            '  "issued_date": "YYYY-MM-DD ආකෘතියෙන් දිනය, නොමැති නම් null",',
-            '  "issued_by": "නිකුත් කළ අමාත්‍යාංශය හෝ අධිකාරිය",',
-            '  "topic": "කෙටි මාතෘකාව සිංහලෙන්",',
-            '  "summary": "චක්‍රලේඛයේ සාරාංශය සිංහලෙන් (වාක්‍ය 2-3)",',
-            '  "key_instructions": ["ප්‍රධාන උපදෙස 1", "ප්‍රධාන උපදෙස 2"],',
-            '  "applies_to": "අදාළ වන්නේ කාටද (සිංහලෙන්)",',
-            '  "deadline": "අවසාන දිනය හෝ null",',
-            '  "language_detected": "Sinhala"',
-            "}",
-            "",
-            f"චක්‍රලේඛ අංකය: {circular['number']}",
-            f"දිනය: {circular['date']}",
-            f"මාතෘකාව: {circular.get('title', 'N/A')[:200]}",
-            "",
-            "චක්‍රලේඛ පෙළ:",
-            text[:MAX_TEXT_CHARS],
-        ]
+        # English instruction but Sinhala values — models handle JSON better with English keys
+        prompt = f"""You are analysing a Sri Lanka government circular written in Sinhala.
+Respond ONLY with a valid JSON object. No text before or after. No markdown code blocks.
+All values must be in Sinhala language (except dates and null).
+
+{{
+  "circular_number": "{circular['number']}",
+  "issued_date": "YYYY-MM-DD or null",
+  "issued_by": "අමාත්‍යාංශය හෝ අධිකාරිය",
+  "topic": "කෙටි මාතෘකාව",
+  "summary": "සාරාංශය වාක්‍ය 2-3",
+  "key_instructions": ["උපදෙස 1", "උපදෙස 2"],
+  "applies_to": "අදාළ පාර්ශ්ව",
+  "deadline": "දිනය හෝ null",
+  "language_detected": "Sinhala"
+}}
+
+Circular number: {circular['number']}
+Date: {circular['date']}
+Title: {circular.get('title', 'N/A')[:150]}
+
+Circular text:
+{text[:MAX_TEXT_CHARS]}"""
     else:
-        lines = [
-            "You are analysing a Sri Lanka government circular.",
-            "Return ONLY a valid JSON object. No text before or after. No markdown.",
-            "",
-            "{",
-            '  "circular_number": "the official circular number",',
-            '  "issued_date": "date in YYYY-MM-DD format, or null",',
-            '  "issued_by": "name of the ministry or authority",',
-            '  "topic": "short topic title in English",',
-            '  "summary": "2-3 sentence summary in English",',
-            '  "key_instructions": ["instruction 1", "instruction 2"],',
-            '  "applies_to": "who this circular applies to",',
-            '  "deadline": "any deadline mentioned, or null",',
-            '  "language_detected": "English"',
-            "}",
-            "",
-            f"- Number: {circular['number']}",
-            f"- Date: {circular['date']}",
-            f"- Title: {circular.get('title', 'N/A')[:200]}",
-            "",
-            f"Circular text:\n{text[:MAX_TEXT_CHARS]}",
-        ]
-    return "\n".join(lines)
+        prompt = f"""You are analysing a Sri Lanka government circular written in English.
+Respond ONLY with a valid JSON object. No text before or after. No markdown code blocks.
+
+{{
+  "circular_number": "{circular['number']}",
+  "issued_date": "YYYY-MM-DD or null",
+  "issued_by": "ministry or authority name",
+  "topic": "short topic title",
+  "summary": "2-3 sentence summary",
+  "key_instructions": ["instruction 1", "instruction 2"],
+  "applies_to": "who this applies to",
+  "deadline": "deadline or null",
+  "language_detected": "English"
+}}
+
+Circular number: {circular['number']}
+Date: {circular['date']}
+Title: {circular.get('title', 'N/A')[:150]}
+
+Circular text:
+{text[:MAX_TEXT_CHARS]}"""
+    return prompt
 
 def parse_response(text):
     text = text.strip()
