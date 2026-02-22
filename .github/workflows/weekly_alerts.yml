@@ -1,0 +1,34 @@
+name: Weekly Circulars Alert
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday at 6:00 AM UTC
+  workflow_dispatch:       # Allow manual trigger
+
+jobs:
+  run-alerts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run alerts
+        env:
+          GROQ_API_KEY:              ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_SHEET_ID:           ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEET_TAB:          ${{ secrets.GOOGLE_SHEET_TAB }}
+          GOOGLE_CREDENTIALS_JSON:   ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SLACK_WEBHOOK_URL:         ${{ secrets.SLACK_WEBHOOK_URL }}
+          GMAIL_USER:                ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
+        run: python run_alerts.py
