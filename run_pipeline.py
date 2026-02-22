@@ -26,14 +26,14 @@ GMAIL_PASSWORD   = os.environ.get('GMAIL_APP_PASSWORD', '')
 GMAIL_TO         = os.environ.get('GMAIL_TO', '')
 SLACK_WEBHOOK    = os.environ.get('SLACK_WEBHOOK_URL', '')
 
-MODEL_NAME       = 'llama-3.1-8b-instant'
+MODEL_NAME       = 'llama-3.1-8b-instant'      # fastest on free tier
 BASE_URL         = 'https://pubad.gov.lk'
 TARGET_YEARS     = {'2025', '2026'}
 LANGUAGES        = ['E', 'S']
 DOWNLOAD_DIR     = Path('downloads')
 TEXT_DIR         = Path('extracted_text')
 DB_FILE          = 'circulars.db'
-MAX_TEXT_CHARS   = 8000
+MAX_TEXT_CHARS   = 1500   # 1500 chars ≈ ~500 tokens — safe for Groq free tier 6k TPM limit
 DELAY_SECONDS    = 2
 MIN_CHARS_PAGE   = 50
 
@@ -489,12 +489,31 @@ def main():
             print(f'  [{lang_code}] Summarising with Groq...')
             try:
                 prompt = build_prompt(circular, text, lang_code)
-                response = client.chat.completions.create(
-                    model=MODEL_NAME,
-                    messages=[{'role': 'user', 'content': prompt}],
-                    timeout=30
-                )
-                summary = parse_response(response.choices[0].message.content)
+
+                # Retry up to 3 times on rate limit
+                summary = None
+                for attempt in range(3):
+                    try:
+                        response = client.chat.completions.create(
+                            model=MODEL_NAME,
+                            messages=[{'role': 'user', 'content': prompt}],
+                            max_tokens=400,   # limit output tokens too
+                            timeout=30
+                        )
+                        summary = parse_response(response.choices[0].message.content)
+                        break
+                    except Exception as ex:
+                        err = str(ex)
+                        if '413' in err or 'rate_limit' in err or '429' in err:
+                            wait = 20 * (attempt + 1)
+                            print(f'  [{lang_code}] Rate limit — waiting {wait}s (attempt {attempt+1}/3)')
+                            time.sleep(wait)
+                        else:
+                            raise
+
+                if not summary:
+                    raise Exception('Failed after 3 retry attempts')
+
                 save_to_db(circular, summary, lang_code, pdf_path, txt_path)
                 print(f'  [{lang_code}] ✅ {summary.get("topic", "")[:60]}')
                 stats['summarised'] += 1
@@ -504,12 +523,12 @@ def main():
                     circular_data['topic']   = summary.get('topic')
                     circular_data['summary'] = summary.get('summary')
 
-                time.sleep(DELAY_SECONDS)
+                time.sleep(10)  # 10s between calls to stay within TPM limit
 
             except Exception as e:
                 print(f'  [{lang_code}] ❌ Summarise failed: {e}')
                 stats['failed'] += 1
-                time.sleep(DELAY_SECONDS)
+                time.sleep(5)
 
         processed.append(circular_data)
 
