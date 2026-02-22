@@ -2,8 +2,8 @@ name: Weekly Circulars Alert
 
 on:
   schedule:
-    - cron: '0 6 * * 1'  # Every Monday at 6:00 AM UTC
-  workflow_dispatch:       # Allow manual trigger
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -35,14 +35,3 @@ jobs:
           GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
         run: python run_alerts.py
-
-      - name: Commit updated DB
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git fetch origin main
-          git reset --hard origin/main
-          git add circulars.db
-          git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git commit -m "Update circulars.db [skip ci]"
-          git push
