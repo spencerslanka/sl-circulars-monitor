@@ -1,3 +1,4 @@
+# ── Week 1-6 (existing) ───────────────────────────────────────────────────────
 requests
 beautifulsoup4
 pymupdf
@@ -7,7 +8,18 @@ groq
 gspread
 google-auth
 slack_sdk
-groq
-gspread
-google-auth
-slack_sdk
+
+# ── Week 7 additions ─────────────────────────────────────────────────────────
+streamlit>=1.32.0
+pandas>=2.0.0
+
+# Vector store
+chromadb>=0.4.22
+
+# Free local embeddings (no API key, runs on CPU)
+sentence-transformers>=2.7.0
+
+# LangChain
+langchain>=0.1.16
+langchain-community>=0.0.34
+langchain-groq>=0.1.3
