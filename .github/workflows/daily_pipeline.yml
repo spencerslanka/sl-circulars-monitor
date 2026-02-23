@@ -2,8 +2,8 @@ name: Sri Lanka Circulars — Daily Pipeline
 
 on:
   schedule:
-    # Runs every day at 8:00 AM Sri Lanka time (2:30 AM UTC)
-    - cron: '30 2 * * *'
+    # Runs every day at 8:40 AM Sri Lanka time (3:10 AM UTC)
+    - cron: '10 3 * * *'
 
   # Allow manual trigger from GitHub Actions tab
   workflow_dispatch:
