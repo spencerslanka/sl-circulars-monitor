@@ -1,15 +1,15 @@
-name: Weekly Circulars Alert
+name: Weekly Circulars Pipeline
 
 on:
   schedule:
-    - cron: '0 6 * * 1'
-  workflow_dispatch:
+    - cron: '0 6 * * 1'  # Every Monday at 6:00 AM UTC
+  workflow_dispatch:       # Allow manual trigger
 
 permissions:
   contents: write
 
 jobs:
-  run-alerts:
+  run-pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +21,28 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-sin tesseract-ocr-tam
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests beautifulsoup4 pymupdf groq gspread \
+                      google-auth slack_sdk
+
+      - name: Run full pipeline
+        env:
+          GROQ_API_KEY:              ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_SHEET_ID:           ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEET_TAB:          ${{ secrets.GOOGLE_SHEET_TAB }}
+          GOOGLE_CREDENTIALS_JSON:   ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SLACK_WEBHOOK_URL:         ${{ secrets.SLACK_WEBHOOK_URL }}
+          GMAIL_USER:                ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
+        run: python run_pipeline.py
 
       - name: Run alerts
         env:
@@ -35,3 +55,14 @@ jobs:
           GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
         run: python run_alerts.py
+
+      - name: Commit new PDFs and updated DB
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add circulars.db
+          git add downloads/ || true
+          git add extracted_text/ || true
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Auto: new circulars $(date '+%Y-%m-%d') [skip ci]"
+          git push
