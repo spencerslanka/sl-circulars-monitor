@@ -15,6 +15,7 @@ Used by app.py — can also be tested from the CLI:
 
 import json
 import os
+import sqlite3
 from typing import Optional
 
 import chromadb
@@ -30,6 +31,24 @@ COLLECTION  = "circulars"
 EMBED_MODEL = "all-MiniLM-L6-v2"
 GROQ_MODEL  = "llama-3.1-8b-instant"   # fastest on Groq free tier
 DEFAULT_K   = 5                          # circulars to retrieve per query
+DB_FILE     = "./circulars.db"
+
+
+def _fetch_pdf_paths(circular_numbers: list[str]) -> dict[str, str]:
+    """Look up pdf_path for a list of circular numbers from SQLite."""
+    if not circular_numbers or not os.path.exists(DB_FILE):
+        return {}
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        placeholders = ",".join("?" * len(circular_numbers))
+        rows = conn.execute(
+            f"SELECT circular_number, pdf_path FROM circulars WHERE circular_number IN ({placeholders})",
+            circular_numbers
+        ).fetchall()
+        conn.close()
+        return {r[0]: r[1] or "" for r in rows}
+    except Exception:
+        return {}
 
 # ── Singletons (loaded once per Streamlit session) ───────────────────────────
 _collection = None
@@ -103,7 +122,14 @@ def retrieve(question: str,
             "summary"         : meta.get("summary", ""),
             "key_instructions": ki,
             "relevance_score" : round((1 - dist) * 100, 1),   # cosine → %
+            "pdf_path"        : "",   # filled in below
         })
+
+    # ── Enrich hits with pdf_path from SQLite ────────────────────────────────
+    pdf_map = _fetch_pdf_paths([h["circular_number"] for h in hits])
+    for h in hits:
+        h["pdf_path"] = pdf_map.get(h["circular_number"], "")
+
     return hits
 
 
