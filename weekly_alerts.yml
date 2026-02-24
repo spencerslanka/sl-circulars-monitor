@@ -1,19 +1,73 @@
-name: Weekly Circulars Pipeline
+name: Sri Lanka Circulars Pipeline
 
+# ─────────────────────────────────────────────────────────────────────────────
+# SCHEDULE: Runs every day at 06:00 UTC (Monday–Friday)
+#           and every Monday for the full pipeline.
+#           Manual trigger always available via workflow_dispatch.
+# ─────────────────────────────────────────────────────────────────────────────
 on:
   schedule:
-    - cron: '0 6 * * 1'  # Every Monday at 6:00 AM UTC
-  workflow_dispatch:       # Allow manual trigger
+    - cron: '0 6 * * 1-5'   # Mon–Fri 6 AM UTC  →  daily detector scan
+  workflow_dispatch:          # Manual trigger from GitHub Actions UI
 
 permissions:
   contents: write
 
 jobs:
-  run-pipeline:
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # JOB 1 — DETECT: fast scan, no AI, no downloads
+  # Runs every weekday.  Exits with code 1 if new circulars are found,
+  # which causes the next job (pipeline) to run.
+  # ───────────────────────────────────────────────────────────────────────────
+  detect:
+    name: 🔍 Detect New Circulars
     runs-on: ubuntu-latest
+    outputs:
+      has_new: ${{ steps.check.outputs.has_new }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install detect dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run detector
+        id: check
+        # The detector exits with code 1 when new circulars are found.
+        # We capture that as an output flag instead of failing the job.
+        run: |
+          python new_detector.py && echo "has_new=false" >> $GITHUB_OUTPUT \
+            || echo "has_new=true" >> $GITHUB_OUTPUT
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Upload detection report
+        uses: actions/upload-artifact@v4
+        with:
+          name: new-circulars-report
+          path: new_circulars_report.json
+          if-no-files-found: ignore
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # JOB 2 — PIPELINE: full process (download, OCR, AI, DB, alerts)
+  # Only runs when the detect job found something new.
+  # Alerts are sent INSIDE run_pipeline.py — NOT called again here.
+  # ───────────────────────────────────────────────────────────────────────────
+  pipeline:
+    name: ⚙️ Full Pipeline
+    runs-on: ubuntu-latest
+    needs: detect
+    if: needs.detect.outputs.has_new == 'true'
+
+    steps:
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -22,47 +76,83 @@ jobs:
           python-version: '3.11'
 
       - name: Install system dependencies
+        # tesseract-ocr-sin  = Sinhala language pack for OCR
+        # tesseract-ocr-tam  = Tamil (future use)
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-sin tesseract-ocr-tam
+          sudo apt-get install -y \
+            tesseract-ocr \
+            tesseract-ocr-sin \
+            tesseract-ocr-tam
 
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
-          pip install requests beautifulsoup4 pymupdf groq gspread \
-                      google-auth slack_sdk
+          pip install \
+            requests beautifulsoup4 \
+            pymupdf \
+            pytesseract Pillow \
+            groq \
+            gspread google-auth \
+            slack_sdk
 
       - name: Run full pipeline
-        env:
-          GROQ_API_KEY:              ${{ secrets.GROQ_API_KEY }}
-          GOOGLE_SHEET_ID:           ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_SHEET_TAB:          ${{ secrets.GOOGLE_SHEET_TAB }}
-          GOOGLE_CREDENTIALS_JSON:   ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
-          SLACK_WEBHOOK_URL:         ${{ secrets.SLACK_WEBHOOK_URL }}
-          GMAIL_USER:                ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
-          GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
+        # run_pipeline.py handles:
+        #   scrape → download → OCR/extract → AI summarise → DB → alerts
+        # Alerts (Slack + email) are sent INSIDE run_pipeline.py.
+        # DO NOT add a separate run_alerts.py step here — that causes duplicates.
         run: python run_pipeline.py
-
-      - name: Run alerts
         env:
           GROQ_API_KEY:              ${{ secrets.GROQ_API_KEY }}
-          GOOGLE_SHEET_ID:           ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_SHEET_TAB:          ${{ secrets.GOOGLE_SHEET_TAB }}
-          GOOGLE_CREDENTIALS_JSON:   ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          GOOGLE_VISION_API_KEY:     ${{ secrets.GOOGLE_VISION_API_KEY }}
           SLACK_WEBHOOK_URL:         ${{ secrets.SLACK_WEBHOOK_URL }}
           GMAIL_USER:                ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_TO:                  ${{ secrets.GMAIL_TO }}
-        run: python run_alerts.py
 
-      - name: Commit new PDFs and updated DB
+      - name: Commit updated DB and downloaded files
         run: |
-          git config user.name "github-actions"
+          git config user.name  "github-actions[bot]"
           git config user.email "actions@github.com"
           git add circulars.db
-          git add downloads/ || true
-          git add extracted_text/ || true
-          git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git commit -m "Auto: new circulars $(date '+%Y-%m-%d') [skip ci]"
+          git add downloads/        || true
+          git add extracted_text/   || true
+          git add vision_usage.json || true
+          git diff --staged --quiet \
+            && echo "No changes to commit" \
+            || git commit -m "Auto: new circulars $(date '+%Y-%m-%d') [skip ci]"
           git push
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # JOB 3 — WEEKLY SHEETS SYNC: push full DB to Google Sheets every Monday
+  # Runs independently of whether new circulars were found.
+  # ───────────────────────────────────────────────────────────────────────────
+  weekly-sheets:
+    name: 📊 Weekly Google Sheets Sync
+    runs-on: ubuntu-latest
+    # Only run on Mondays (cron day-of-week = 1)
+    if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install gspread google-auth
+
+      - name: Sync to Google Sheets
+        run: python run_alerts.py
+        env:
+          GROQ_API_KEY:              ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_SHEET_ID:           ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEET_TAB:          ${{ secrets.GOOGLE_SHEET_TAB }}
+          GOOGLE_CREDENTIALS_JSON:   ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SLACK_WEBHOOK_URL:         ${{ secrets.SLACK_WEBHOOK_URL }}
+          GMAIL_USER:                ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:        ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO:                  ${{ secrets.GMAIL_TO }}

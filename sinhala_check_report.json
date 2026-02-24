@@ -1,0 +1,805 @@
+{
+  "summary": {
+    "GOOD": 53,
+    "LATIN": 0,
+    "SCANNED": 0,
+    "EMPTY": 0
+  },
+  "details": [
+    {
+      "circular_number": "01/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\01-2025.pdf",
+      "status": "GOOD",
+      "description": "1340 chars, 792 Sinhala Unicode chars (59.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Revising the Provisions of the Establishments Code",
+      "sample_lines": [
+        "ඒකාබද්ධ ස ේවා චක්‍රසේඛ :  01/2025",
+        "මසේ අංකය : කා.ස ේ.ස ේ./V16/බහු. ං.කා.",
+        "හයකයින් ඒ.ස ේ.බඳවා."
+      ],
+      "total_chars": 1340
+    },
+    {
+      "circular_number": "01/2025 (Letter)",
+      "pdf_path": "downloads\\2025\\Sinhala\\01-2025 (Letter).pdf",
+      "status": "GOOD",
+      "description": "4496 chars, 2973 Sinhala Unicode chars (66.1%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "මගේ අංකය : Pns/P5/CAB.PAP/SUB 23- III ගෙළුම",
+        "රාජ්‍ය රිපරාන,  රාා්  භා ා භහ",
+        "රාා්  රාන, අමාත්යාංශය"
+      ],
+      "total_chars": 4496
+    },
+    {
+      "circular_number": "01/2026",
+      "pdf_path": "downloads\\2026\\Sinhala\\01-2026.pdf",
+      "status": "GOOD",
+      "description": "1630 chars, 967 Sinhala Unicode chars (59.3%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Public Administration Circulars Issued Revising the Provisions of the Establishments Code - 2025",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  01/2026",
+        "මලේේ පඅංකය   EST-1/RESCH/08/0012-Vol I",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 1630
+    },
+    {
+      "circular_number": "02/2016(I)",
+      "pdf_path": "downloads\\2025\\Sinhala\\02-2016(I).pdf",
+      "status": "GOOD",
+      "description": "9365 chars, 6599 Sinhala Unicode chars (70.5%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ප: 02/2016(I)",
+        "මලේ පඅංකය : EST-1/RESCH/08/0023(I)",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 9365
+    },
+    {
+      "circular_number": "02/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\02-2025.pdf",
+      "status": "GOOD",
+      "description": "70180 chars, 50386 Sinhala Unicode chars (71.8%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Revision of Salaries of the Public Service 2025",
+      "sample_lines": [
+        "ඒකාබද්ධ ස ේවා චක්‍රසඛ  ංකක : 02/2025",
+        "මසේ ංකක : COM/Trans/V/වා. ්.මා./2026",
+        "රාජ්‍ය පරිපාලන, පළාත්  භා  හ"
+      ],
+      "total_chars": 70180
+    },
+    {
+      "circular_number": "02/2025 (Letter)",
+      "pdf_path": "downloads\\2025\\Sinhala\\02-2025 (Letter).pdf",
+      "status": "GOOD",
+      "description": "3067 chars, 1986 Sinhala Unicode chars (64.8%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Revision of Salaries of the Public Service 2025",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  පිපි : ප02/2025",
+        "මලේේ පඅංකය ප: පEST-5/04/PCY/0041",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 3067
+    },
+    {
+      "circular_number": "02/2026",
+      "pdf_path": "downloads\\2026\\Sinhala\\02-2026.pdf",
+      "status": "GOOD",
+      "description": "14850 chars, 8178 Sinhala Unicode chars (55.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Public Administration Circulars 2025",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  02/2026",
+        "මලේේ පඅංකය   EST-1/RESCH/08/0012-Vol I",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 14850
+    },
+    {
+      "circular_number": "03/2019 (VI)",
+      "pdf_path": "downloads\\2025\\Sinhala\\03-2019 (VI).pdf",
+      "status": "GOOD",
+      "description": "5346 chars, 3209 Sinhala Unicode chars (60.0%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ : 03/2019 (VI)",
+        "මලේ පඅංකය : පEST-3/06/DIC/0306(i)",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ"
+      ],
+      "total_chars": 5346
+    },
+    {
+      "circular_number": "03/2019(VII)",
+      "pdf_path": "downloads\\2026\\Sinhala\\03-2019(VII).pdf",
+      "status": "GOOD",
+      "description": "11965 chars, 6596 Sinhala Unicode chars (55.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "List of Disciplinary Inquiry Officers",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ : 03/2019(VII)",
+        "මලේ පඅංකය : පEST-3/06/DIC/0309(i)",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ"
+      ],
+      "total_chars": 11965
+    },
+    {
+      "circular_number": "03/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\03-2025.pdf",
+      "status": "GOOD",
+      "description": "42311 chars, 23574 Sinhala Unicode chars (55.7%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප3/2030",
+        "මලේේ පඅංකය ප: Pns/P4/W&OP/F11",
+        "රාජ්‍ය පරිපරාන   පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 42311
+    },
+    {
+      "circular_number": "03/2025 (Letter)",
+      "pdf_path": "downloads\\2025\\Sinhala\\03-2025 (Letter).pdf",
+      "status": "GOOD",
+      "description": "1326 chars, 868 Sinhala Unicode chars (65.5%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Salaries Payment as per Public Administration Circular 10/2025",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ පලිපි ප: 03/2025",
+        "මලේ පඅංකය ප: පEST-5/04/PCY/0041",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප ප ප ප ප"
+      ],
+      "total_chars": 1326
+    },
+    {
+      "circular_number": "03/2025(I)",
+      "pdf_path": "downloads\\2025\\Sinhala\\03-2025(I).pdf",
+      "status": "GOOD",
+      "description": "3733 chars, 2512 Sinhala Unicode chars (67.3%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පචක්‍රලේඛ : 03/2025 ප(I)",
+        "මලේ පඅංකය ප: පPns/P4/W&OP/F11",
+        "රාජ්‍ය පරිපරාන   පරාා්  පභා ා පභහ ප"
+      ],
+      "total_chars": 3733
+    },
+    {
+      "circular_number": "03/2026",
+      "pdf_path": "downloads\\2026\\Sinhala\\03-2026.pdf",
+      "status": "GOOD",
+      "description": "1510 chars, 1014 Sinhala Unicode chars (67.2%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Granting of Special Leave during the Ramadan (Ramazan) Season 2026",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප03/2026",
+        "මලේේ පඅංකය ප: පEST-6/03/LEA/3125",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 1510
+    },
+    {
+      "circular_number": "04/2017(II)",
+      "pdf_path": "downloads\\2025\\Sinhala\\04-2017(II).pdf",
+      "status": "GOOD",
+      "description": "1345 chars, 849 Sinhala Unicode chars (63.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Attachment of Trainees to Public Institutions for Practical Training",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප: 04/2017(II)",
+        "මලේේ පඅංකය ප: EST-7/04/ALW/2060(v)",
+        "රාජ්‍ය පරිපරාන   පරළාත් පසභා පසහ"
+      ],
+      "total_chars": 1345
+    },
+    {
+      "circular_number": "04/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\04-2025.pdf",
+      "status": "GOOD",
+      "description": "5953 chars, 4142 Sinhala Unicode chars (69.6%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "඿්඼දේල කටයුතු චක්‍රදේඛ : 04/2025",
+        "භදේ අංකඹ : එච්ඒ/1/2/2022",
+        "යාජය ඳිපඳාරන  ඳශාත් ඿බා ඿ව"
+      ],
+      "total_chars": 5953
+    },
+    {
+      "circular_number": "04/2025 Letter",
+      "pdf_path": "downloads\\2025\\Sinhala\\04-2025 Letter.pdf",
+      "status": "GOOD",
+      "description": "2099 chars, 1293 Sinhala Unicode chars (61.6%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Dealing with documents delivered by hand to public institutions",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ පලිපි ප: ප04/2025",
+        "ප ප ප ප ප ප               පමලේ පඅංකය : EST-1/CIRL/03/0001",
+        "ප ප ප ප ප ප               රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 2099
+    },
+    {
+      "circular_number": "04/2026",
+      "pdf_path": "downloads\\2026\\Sinhala\\04-2026.pdf",
+      "status": "GOOD",
+      "description": "1683 chars, 1141 Sinhala Unicode chars (67.8%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Revision of Section 13, Chapter XXIV of the Establishments Code Festival Advance",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප04/2026",
+        "මලේේ පඅංකය ප: පEST-6/04/LON/0202",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 1683
+    },
+    {
+      "circular_number": "05/2008 (II)",
+      "pdf_path": "downloads\\2025\\Sinhala\\05-2008 (II).pdf",
+      "status": "GOOD",
+      "description": "2647 chars, 1690 Sinhala Unicode chars (63.8%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Introduction of the Citizen/ Client Charter of 2025 to 2029",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ප : 05/2008 (II)",
+        "මලේ පඅංකය : පPA/PSRD/08/10",
+        "රාජ්‍ය පරිපරාන   පරාාත්සභා පසහ"
+      ],
+      "total_chars": 2647
+    },
+    {
+      "circular_number": "05/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\05-2025.pdf",
+      "status": "GOOD",
+      "description": "1506 chars, 1011 Sinhala Unicode chars (67.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Granting of Special Leave during Ramalan (Ramazan) Season",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප05/2025",
+        "මලේේ පඅංකය ප: පEST-6/03/LEA/3125",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 1506
+    },
+    {
+      "circular_number": "05/2025 (Letter)",
+      "pdf_path": "downloads\\2025\\Sinhala\\05-2025 (Letter).pdf",
+      "status": "GOOD",
+      "description": "5920 chars, 4100 Sinhala Unicode chars (69.3%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ලිපි ප: ප05/2025",
+        "මලේ පඅංකය : පEST-5/04/PCY/0041",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 5920
+    },
+    {
+      "circular_number": "06/2025 (Letter)",
+      "pdf_path": "downloads\\2025\\Sinhala\\06-2025 (Letter).pdf",
+      "status": "GOOD",
+      "description": "1986 chars, 1357 Sinhala Unicode chars (68.3%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Seeking the advice or opinion of the Attorney General by public institutions and public officers",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ පලිපි ප: 06/2025",
+        "මලේ පඅංකය : EST-1/CIRL/03/0001",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 1986
+    },
+    {
+      "circular_number": "07/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\07-2025.pdf",
+      "status": "GOOD",
+      "description": "7633 chars, 5273 Sinhala Unicode chars (69.1%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප: 07/2025",
+        "මලේේ පඅංකය ප: පEST-7/05/ALW/1009",
+        "ප ප ප       රාජ්‍ය පරිපරාන   පරාා්  පභාා පභ  ප"
+      ],
+      "total_chars": 7633
+    },
+    {
+      "circular_number": "08/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\08-2025.pdf",
+      "status": "GOOD",
+      "description": "1141 chars, 768 Sinhala Unicode chars (67.3%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Revision of sub-section 8:5, Chapter XII, Volume I of the Establishments Code",
+      "sample_lines": [
+        "රළජ්‍ය පඳිපඳළ඼න පක්‍රලේඛ  ප  ප08/2025",
+        "මලේේ පඅංකය ප: පEST-6/03/LEA/4000",
+        "රළජ්‍ය පඳිපඳළ඼න, ඳෂළත් පවභළ පවශ ප"
+      ],
+      "total_chars": 1141
+    },
+    {
+      "circular_number": "09/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\09-2025.pdf",
+      "status": "GOOD",
+      "description": "7902 chars, 5815 Sinhala Unicode chars (73.6%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ප: 09/2025",
+        "මලේ පඅංකය : EST-1/CIRL/03/0001",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 7902
+    },
+    {
+      "circular_number": "10/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\10-2025.pdf",
+      "status": "GOOD",
+      "description": "411788 chars, 30942 Sinhala Unicode chars (7.5%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රළජ්‍ය පඳිපඳළ඼න පක්‍රලේඛ ප: 10/2025 ප",
+        "මලේ පඅංකය : පEST-5/04/PCY/0041",
+        "රළජ්‍ය පඳිපඳළ඼න, පඳෂළත් පවභළ පවශ ප"
+      ],
+      "total_chars": 411788
+    },
+    {
+      "circular_number": "11/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\11-2025.pdf",
+      "status": "GOOD",
+      "description": "7179 chars, 3194 Sinhala Unicode chars (44.5%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප11/2025",
+        "මලේේ පඅංකය ප: පEST-6/03/LEA/1061(1)",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ"
+      ],
+      "total_chars": 7179
+    },
+    {
+      "circular_number": "12/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\12-2025.pdf",
+      "status": "GOOD",
+      "description": "2171 chars, 1435 Sinhala Unicode chars (66.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Distress Loan Scheme",
+      "sample_lines": [
+        "රළජ්‍ය පඳිපඳළ඼න පක්‍රලේඛ  ප: 12/2025",
+        "මලේේ පඅංකය ප: පEST-6/04/LON/1030",
+        "රළජ්‍ය පඳිපඳළ඼න, පඳෂළත් පවභළ පවශ ප ප ප ප ප"
+      ],
+      "total_chars": 2171
+    },
+    {
+      "circular_number": "13/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\13-2025.pdf",
+      "status": "GOOD",
+      "description": "8399 chars, 4359 Sinhala Unicode chars (51.9%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  චක‍් පරලේඛ : 13/2025",
+        "ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප පමලේඅංක‍්ය : පF/FR/03/GBR/Circular",
+        "ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප පරාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 8399
+    },
+    {
+      "circular_number": "14/2022 (V)",
+      "pdf_path": "downloads\\2025\\Sinhala\\14-2022 (V).pdf",
+      "status": "GOOD",
+      "description": "3030 chars, 2020 Sinhala Unicode chars (66.7%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප: 14/2022(V)",
+        "ප ප ප පමලේේ පඅංකය ප: පEST-6/03/LEA/3162(4)",
+        "ප ප ප පරාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 3030
+    },
+    {
+      "circular_number": "14/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\14-2025.pdf",
+      "status": "GOOD",
+      "description": "4702 chars, 1904 Sinhala Unicode chars (40.5%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Revenue Estimates for Year 2026 for Revenue Code 20.02.01.01, Rent on Government Buildings & Housing...",
+      "sample_lines": [
+        "රාජ්‍ය පරිපාලන චක‍්‍රලේඛ : 14/2025",
+        "මලේඅංක‍්ය :‍F/FR/03/GBR/Circular",
+        "‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍    රාජ්‍ය‍පරිපාලන,‍පළාත්‍සභා‍සහ"
+      ],
+      "total_chars": 4702
+    },
+    {
+      "circular_number": "15/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\15-2025.pdf",
+      "status": "GOOD",
+      "description": "555032 chars, 51728 Sinhala Unicode chars (9.3%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ප: 15/2025",
+        "මලේ පඅංකය : පPns/P6/21",
+        "රාජ්‍ය පරිපරාන   පරාා්  පභා ා පභහ"
+      ],
+      "total_chars": 555032
+    },
+    {
+      "circular_number": "15/2025 (I)",
+      "pdf_path": "downloads\\2025\\Sinhala\\15-2025 (I).pdf",
+      "status": "GOOD",
+      "description": "60734 chars, 11424 Sinhala Unicode chars (18.8%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ප: 15/2025 (I)",
+        "මලේ පඅංකය : පPns/P6/21(II ලෙළුම)",
+        "රාජ්‍ය පරිපරාන   පරාා්  පභා ා පභහ පරාා්  ප"
+      ],
+      "total_chars": 60734
+    },
+    {
+      "circular_number": "16/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\16-2025.pdf",
+      "status": "GOOD",
+      "description": "29312 chars, 17745 Sinhala Unicode chars (60.5%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප: 16/2025",
+        "මලේේ පඅංකය ප: R/9/2/2025",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 29312
+    },
+    {
+      "circular_number": "17/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\17-2025.pdf",
+      "status": "GOOD",
+      "description": "23157 chars, 17370 Sinhala Unicode chars (75.0%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  17/2025",
+        "මලේේ පඅංකය ප: MPA/PSD/C6/AT - 2026",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ"
+      ],
+      "total_chars": 23157
+    },
+    {
+      "circular_number": "18/2020 (II)",
+      "pdf_path": "downloads\\2025\\Sinhala\\18-2020 (II).pdf",
+      "status": "GOOD",
+      "description": "2200 chars, 1488 Sinhala Unicode chars (67.6%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Implementation of Official Language Policy",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප18/2020 (II)",
+        "මලේේ පඅංකය ප: පEST/2/05/POL/0087",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ"
+      ],
+      "total_chars": 2200
+    },
+    {
+      "circular_number": "18/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\18-2025.pdf",
+      "status": "GOOD",
+      "description": "25931 chars, 19130 Sinhala Unicode chars (73.8%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  18/2025",
+        "මලේේ පඅංකය ප: CS/SLAS/ANN.TRA/2026",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 25931
+    },
+    {
+      "circular_number": "19/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\19-2025.pdf",
+      "status": "GOOD",
+      "description": "17516 chars, 12814 Sinhala Unicode chars (73.2%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප: 19/2025",
+        "මලේේ පඅංකය ප: CS/SLAS/ANN.TRA/SP-2026",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 17516
+    },
+    {
+      "circular_number": "20/2011(I)",
+      "pdf_path": "downloads\\2025\\Sinhala\\20-2011(I).pdf",
+      "status": "GOOD",
+      "description": "1329 chars, 640 Sinhala Unicode chars (48.2%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Fees for providing photo copies required for Disciplinary Inquiries",
+      "sample_lines": [
+        "එස්. ආල ෝකබණ්ඩාර",
+        "රාජ්‍ය රිපරා ,  රාා්  සාා සහ",
+        "රාා්  රා , අමාත්යාාංශය"
+      ],
+      "total_chars": 1329
+    },
+    {
+      "circular_number": "20/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\20-2025.pdf",
+      "status": "GOOD",
+      "description": "25975 chars, 19265 Sinhala Unicode chars (74.2%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  20 ප/2025",
+        "මලේේ පඅංකය ප: MpubAd/AcSD/Ann. Transfers -2026",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 25975
+    },
+    {
+      "circular_number": "21/2017(I)",
+      "pdf_path": "downloads\\2026\\Sinhala\\21-2017(I).pdf",
+      "status": "GOOD",
+      "description": "1607 chars, 1062 Sinhala Unicode chars (66.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Revision of Appointment Letters regarding the Granting of Pension Entitlements to Officers Recruited to the Public Service after 01.01.2016",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ : 21/2017(I)",
+        "මලේ පඅංකය : Pns/P5/ ව පවිශ්‍රාම පවුප් ක ප්‍රමය-Tem 01",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ"
+      ],
+      "total_chars": 1607
+    },
+    {
+      "circular_number": "22/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\22-2025.pdf",
+      "status": "GOOD",
+      "description": "10765 chars, 7763 Sinhala Unicode chars (72.1%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප22/2025",
+        "මලේේ පඅංකය ප  PA/PD/01/14/01.",
+        "රාජ්‍ය පරිපරාන   පරාා්  පභාා පභ  ප"
+      ],
+      "total_chars": 10765
+    },
+    {
+      "circular_number": "23/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\23-2025.pdf",
+      "status": "GOOD",
+      "description": "28006 chars, 20180 Sinhala Unicode chars (72.1%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "✅ 150 Sinhala chars in DB",
+      "db_topic": "නාර්ෂික ්ථා මා්වීරු -2026",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප: 23/2025",
+        "මලේේ පඅංකය : පක.ලේ ේ.නි./අධි/ ්.මා./2026",
+        "ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප        ප ප ප  පරාජ්‍ය පරිපරාන , රළාත් ප භා ප හ ප"
+      ],
+      "total_chars": 28006
+    },
+    {
+      "circular_number": "24/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\24-2025.pdf",
+      "status": "GOOD",
+      "description": "1986 chars, 1067 Sinhala Unicode chars (53.7%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Rates for Holiday Bungalows",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ : ප24/2025",
+        "ප ප ප ප ප ප               පමලේ පඅංකය : EST-1/01/ADM/0015",
+        "ප ප ප ප ප ප               රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 1986
+    },
+    {
+      "circular_number": "25/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\25-2025.pdf",
+      "status": "GOOD",
+      "description": "1612 chars, 1063 Sinhala Unicode chars (65.9%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Providing Relief to Public Officers entitled to the exercise of Political Rights who submitted Nominations to contest for the Local Authorities Elections in 2023",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ප: 25/2025",
+        "මලේ පඅංකය : පEST-3/04/POL/0064",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 1612
+    },
+    {
+      "circular_number": "26/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\26-2025.pdf",
+      "status": "GOOD",
+      "description": "5601 chars, 3792 Sinhala Unicode chars (67.7%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප26/2025",
+        "මලේේ පඅංකය ප: EST-7/06/UNI/X",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ"
+      ],
+      "total_chars": 5601
+    },
+    {
+      "circular_number": "27/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\27-2025.pdf",
+      "status": "GOOD",
+      "description": "6651 chars, 4560 Sinhala Unicode chars (68.6%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  27/2025",
+        "ප ප ප ප ප",
+        "මලේේ පඅංකය ප  පEST-7/06/UNI/X"
+      ],
+      "total_chars": 6651
+    },
+    {
+      "circular_number": "28/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\28-2025.pdf",
+      "status": "GOOD",
+      "description": "5101 chars, 3535 Sinhala Unicode chars (69.3%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප28/2025",
+        "මලේේ පඅංකය ප: EST-7/06/INT/1002-1",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 5101
+    },
+    {
+      "circular_number": "29/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\29-2025.pdf",
+      "status": "GOOD",
+      "description": "4735 chars, 3486 Sinhala Unicode chars (73.6%) — correctly extracted ✅",
+      "in_db": false,
+      "db_status": "—",
+      "db_topic": "",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප29/2025",
+        "මලේේ පඅංකය   EST-1/CIRL/03/0001",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 4735
+    },
+    {
+      "circular_number": "30/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\30-2025.pdf",
+      "status": "GOOD",
+      "description": "1077 chars, 631 Sinhala Unicode chars (58.6%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Declaring a Special Holiday for Government Offices and Offices under the Ministry of Public Administration",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප30/2025",
+        "මලේේ පඅංකය   පEST-6/03/LEA/1060",
+        "රාජ්‍ය පරිපරාන   පරාා්  පභාා පභ  ප"
+      ],
+      "total_chars": 1077
+    },
+    {
+      "circular_number": "31/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\31-2025.pdf",
+      "status": "GOOD",
+      "description": "5336 chars, 3927 Sinhala Unicode chars (73.6%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Special Advance to Public Officers",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප31/2025",
+        "මලේේ පඅංකය ප: පEST-6/04/LON/0207",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 5336
+    },
+    {
+      "circular_number": "32/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\32-2025.pdf",
+      "status": "GOOD",
+      "description": "6955 chars, 2990 Sinhala Unicode chars (43.0%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Special Leave for Public Officers Affected by Floods and Landslides",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ  ප  ප32/2025",
+        "මලේේ පඅංකය ප: පEST-6/03/LEA/1061(1)",
+        "රාජ්‍ය පරිපරාන , රළාත් පසභා පසහ"
+      ],
+      "total_chars": 6955
+    },
+    {
+      "circular_number": "33/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\33-2025.pdf",
+      "status": "GOOD",
+      "description": "8847 chars, 4332 Sinhala Unicode chars (49.0%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Submission of Report on Arrears of Revenue for Code 20.02.01.01",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  චක‍් පරලේඛ : 33/2025",
+        "ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප පමලේඅංක‍්ය : ප F/FR/03/GBR/Circular",
+        "ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප ප පරාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 8847
+    },
+    {
+      "circular_number": "34/2025",
+      "pdf_path": "downloads\\2025\\Sinhala\\34-2025.pdf",
+      "status": "GOOD",
+      "description": "4582 chars, 3334 Sinhala Unicode chars (72.8%) — correctly extracted ✅",
+      "in_db": true,
+      "db_status": "⚠️  DB has Latin text only (AI gave English response)",
+      "db_topic": "Commencement of Work, Year 2026",
+      "sample_lines": [
+        "රාජ්‍ය පරිපරාන  පක්‍රලේඛ ප: ප34/2025",
+        "මලේ පඅංකය : EST-1/MISCL/06/0032(II)",
+        "රාජ්‍ය පරිපරාන , පරළාත් පසභා පසහ ප"
+      ],
+      "total_chars": 4582
+    }
+  ]
+}

@@ -1,25 +1,38 @@
-# ── Week 1-6 (existing) ───────────────────────────────────────────────────────
-requests
-beautifulsoup4
-pymupdf
-pytesseract
-Pillow
-groq
-gspread
-google-auth
-slack_sdk
+# ── Sri Lanka Circulars Monitor — requirements.txt ───────────────────────────
+# Install with:  pip install -r requirements.txt
+# Python 3.11+
 
-# ── Week 7 additions ─────────────────────────────────────────────────────────
+# ── Web scraping (Weeks 1-2) ──────────────────────────────────────────────────
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# ── PDF handling (Week 2-3) ───────────────────────────────────────────────────
+pymupdf>=1.23.0          # PyMuPDF — fast native PDF text extraction
+
+# ── OCR for scanned PDFs (Week 3) ────────────────────────────────────────────
+# NOTE: also requires Tesseract binary + language packs installed:
+#   Ubuntu/GitHub Actions:  sudo apt-get install tesseract-ocr tesseract-ocr-sin
+#   Windows:                https://github.com/UB-Mannheim/tesseract/wiki
+pytesseract>=0.3.10
+Pillow>=10.0.0
+
+# ── AI / LLM (Week 4) ────────────────────────────────────────────────────────
+groq>=0.5.0              # Groq API client (free tier: llama-3.1-8b-instant)
+
+# ── Alerts (Week 5) ──────────────────────────────────────────────────────────
+gspread>=6.0.0           # Google Sheets
+google-auth>=2.28.0
+slack_sdk>=3.27.0        # Slack (optional — can also use raw webhook)
+
+# ── Streamlit AI Agent (Week 7) ──────────────────────────────────────────────
 streamlit>=1.32.0
 pandas>=2.0.0
 
-# Vector store
+# ── Vector store + embeddings (Week 7) ───────────────────────────────────────
 chromadb>=0.4.22
+sentence-transformers>=2.7.0   # all-MiniLM-L6-v2 — free, CPU, no API key
 
-# Free local embeddings (no API key, runs on CPU)
-sentence-transformers>=2.7.0
-
-# LangChain
+# ── LangChain RAG chain (Week 7) ─────────────────────────────────────────────
 langchain>=0.1.16
 langchain-community>=0.0.34
 langchain-groq>=0.1.3
