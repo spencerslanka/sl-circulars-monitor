@@ -103,6 +103,7 @@ jobs:
         # DO NOT add a separate run_alerts.py step here — that causes duplicates.
         run: python run_pipeline.py
         env:
+          GEMINI_API_KEY:            ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY:              ${{ secrets.GROQ_API_KEY }}
           GOOGLE_VISION_API_KEY:     ${{ secrets.GOOGLE_VISION_API_KEY }}
           SLACK_WEBHOOK_URL:         ${{ secrets.SLACK_WEBHOOK_URL }}
